@@ -20,9 +20,12 @@ this interface in the creation of this class.
 #endif
 #include <Adafruit_GFX.h>
 
+#define DEFAULT_WIDTH 96
+#define DEFAULT_HEIGHT 96
+
 class SHARPMEMORYLCD : public Adafruit_GFX {
 public:
-	SHARPMEMORYLCD();
+	SHARPMEMORYLCD(int16_t w = DEFAULT_WIDTH, int16_t h = DEFAULT_HEIGHT);
 	~SHARPMEMORYLCD();
         void LcdInitialize();
         void LcdAllClearMode();

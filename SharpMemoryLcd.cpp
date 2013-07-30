@@ -115,20 +115,19 @@ const unsigned char ARDUINOBMP[ARRAYSIZE] PROGMEM = {
 	0,0,0,0,0,0,0,0,0,0,0,0
 };
 
-SHARPMEMORYLCD::SHARPMEMORYLCD() : Adafruit_GFX(96, 96) {
+SHARPMEMORYLCD::SHARPMEMORYLCD(int16_t w, int16_t h) : Adafruit_GFX(w, h) {
   pinMode(DISP, OUTPUT);
   pinMode(EXTC, OUTPUT);
   pinMode(EXTM, OUTPUT); //this can be ignored and you can just pull the pin high on your PCB
   pinMode(SI, OUTPUT);
   pinMode(SCS, OUTPUT);
   pinMode(SCLK, OUTPUT);
-
 #ifdef __AVR_ATmega32U4__
   TCCR4B = TCCR4B & 0b11111000 | 0x07; //this sets the EXTC timer on pin 3. you need to change this to move pins
 #else
   TCCR2B = TCCR2B & 0b11111000 | 0x07; //this sets the EXTC timer on pin 3. you need to change this to move pins
 #endif
-
+  // constructor(96, 96);
   LcdClearBuffer();
 }
 
